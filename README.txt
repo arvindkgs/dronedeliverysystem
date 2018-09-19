@@ -1,3 +1,11 @@
+Build command (Creates a jar-with-dependencies)
+-----------------------------------------------
+mvn clean dependency:copy-dependencies package
+
+Run command (from dronedeliverysystem folder)
+---------------------------------------------
+java -jar target/drone-delivery-system-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 Drone Delivery System
 ---------------------
 Provides you with following objects
