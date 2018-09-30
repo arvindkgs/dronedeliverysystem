@@ -1,8 +1,10 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
@@ -65,10 +67,15 @@ public class Main {
 
         //Read Messages
         System.out.println("--------------------------Reading Event Queue---------------------------");
-        Iterator<DroneEvent> iterator = cc.iterateEventLog(droneName);
-        while (iterator.hasNext()) {
-            DroneEvent message = (DroneEvent) iterator.next();
-            System.out.println("Drone: " + message.droneName + ", Event: " + message.type + " : " + message.message);
+        HashMap<String, Queue<DroneEvent>> eventCabin = cc.getEventCabin();
+        for (String drone : eventCabin.keySet()) {
+            Iterator<DroneEvent> iterator = eventCabin.get(drone).iterator();
+            System.out.println("-------------Start Drone:" + drone + "------------------------");
+            while (iterator.hasNext()) {
+                DroneEvent message = (DroneEvent) iterator.next();
+                System.out.println("Event: " + message.type + " : " + message.message);
+            }
+            System.out.println("-------------End Drone:" + drone + "------------------------");
         }
     }
 }

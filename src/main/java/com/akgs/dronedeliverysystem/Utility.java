@@ -1,4 +1,4 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
@@ -17,6 +17,8 @@ public class Utility {
 
     static {
         try {
+            Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+            root.setLevel(Level.ERROR);
             prop = new Properties();
             String propFileName = "configuration.properties";
             InputStream inputStream = new Object() { }.getClass().getClassLoader().getResourceAsStream(propFileName);

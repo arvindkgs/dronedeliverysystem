@@ -1,4 +1,4 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
@@ -101,7 +101,7 @@ public class Drone {
 
     private boolean park() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             logger.error("Thread interrupted during parking park");
             return false;
@@ -113,7 +113,7 @@ public class Drone {
     private Coordinates moveToLocation(final Coordinates location) {
         sendEvent(STATE.MOVING, location.getName());
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             logger.error("Thread interrupted during moving to location:" + location.getName());
             return null;
@@ -129,7 +129,7 @@ public class Drone {
         }
         sendEvent(STATE.UNLOADING_ITEM, (String) item);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             logger.error("Thread interrupted during unloading item");
             return false;
@@ -142,7 +142,7 @@ public class Drone {
     private boolean loadItem(Object item) {
         sendEvent(STATE.LOADING_ITEM, (String) item);
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             logger.error("Thread interrupted during loading item");
             return false;

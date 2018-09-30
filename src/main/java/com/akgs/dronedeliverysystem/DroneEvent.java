@@ -1,4 +1,4 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 import java.io.Serializable;
 

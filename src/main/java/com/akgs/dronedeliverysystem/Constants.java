@@ -1,4 +1,4 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 public class Constants {
     public static final String BROKER_URL = "tcp://localhost:61616";

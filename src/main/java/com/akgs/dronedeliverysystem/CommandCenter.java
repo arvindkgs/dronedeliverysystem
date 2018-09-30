@@ -1,4 +1,4 @@
-package com.akgs.interview.scriptbox.dronedeliverysystem;
+package com.akgs.dronedeliverysystem;
 
 import ch.qos.logback.classic.Logger;
 import org.apache.activemq.ActiveMQConnectionFactory;
