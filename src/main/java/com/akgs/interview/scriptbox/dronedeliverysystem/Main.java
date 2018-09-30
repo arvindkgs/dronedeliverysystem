@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * @author Arvind Kumar GS
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(new InputStreamReader(System.in));
@@ -25,11 +28,19 @@ public class Main {
 
         System.out.println("Creating drone('Up-Up-And-Away')");
         //Create drone
-        String droneName = "Up-Up-And-Away";
-        Drone drone = cc.createDrone(droneName);
+        String droneName = "1.Up-Up-And-Away";
+        cc.createDrone(droneName);
+        droneName = "2.Flyby";
+        cc.createDrone(droneName);
+        System.out.println("Creating drone('Flyby')");
         System.out.println("Setting destination.");
         //Set destination
         Coordinates destination = new Coordinates("Destination", 110, 110);
+
+        //Add multiple delivery tasks
+        cc.addTask("Item1", CommandCenter.TASK_PRIORITY.PRIME, destination);
+        cc.addTask("Item2", CommandCenter.TASK_PRIORITY.STANDARD, destination);
+        cc.addTask("Item3", CommandCenter.TASK_PRIORITY.PRIME, destination);
 
         //Instruct the CommandCenter to send the drone 'Up-Up-And-Away' following commands,
         // * pickup 'Item1',
@@ -38,7 +49,7 @@ public class Main {
         //these instructions will be carried out asynchronously by the drone.
         System.out.println("Commanding drone to pickup item 'Item1' and deliver to 'Destination'");
         try {
-            cc.pickupAndDeliverItem(drone, "Item1", destination);
+            cc.scheduleTaskDeliveries();
         } catch (ItemNotPresentException e) {
             System.out.println(e.getMessage());
         }
